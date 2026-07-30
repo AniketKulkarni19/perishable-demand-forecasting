@@ -1,0 +1,20 @@
+# Data — too large / not for public repo
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+
+# Environment
+.venv/
+__pycache__/
+*.pyc
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Kaggle credentials — NEVER commit
+kaggle.json
+.env
+
+# OS
+.DS_Store
