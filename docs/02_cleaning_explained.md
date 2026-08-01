@@ -241,7 +241,7 @@ Mean daily units, with zeros vs. sales-days-only:
 
 ---
 
-## 7. Talking points for interviews
+## 7. Key takeaways
 
 - *"The dataset only recorded days with sales, so 23% of the true series was implicitly missing. I reconstructed the full daily grid — but bounded per store-item pair by first and last observed sale, so I wasn't fabricating history for products a store never carried or had discontinued."*
 - *"Quantifying it: uncorrected, poultry would have been forecast at 16.7 units/day against a true mean of 12.25 — a 36% over-forecast, which on perishable protein is direct spoilage cost."*
