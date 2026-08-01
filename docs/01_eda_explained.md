@@ -186,7 +186,7 @@ The inner expression produces True/False for every row; wrapping it in `df[...]`
 
 ---
 
-## 8. Talking points for interviews
+## 8. Key takeaways
 
 - *"The raw dataset was 125 million rows against 8 GB of RAM, so I used DuckDB for out-of-core processing — aggregations ran across the full dataset without ever loading it into memory."*
 - *"I discovered the dataset only recorded non-zero sales days, meaning 61% of the item-store-day grid was implicitly missing. Left uncorrected, that would have biased every forecast upward."*
