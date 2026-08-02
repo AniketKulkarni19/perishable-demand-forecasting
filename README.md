@@ -128,13 +128,16 @@ Reported because they were tested, not because they worked.
 ## Repository structure
 
 ```
-notebooks/     01 EDA → 09 final evaluation
-src/           importable feature engineering and prediction modules
-app/           FastAPI service
-docs/          decision rationale for every phase
-models/        trained LightGBM models
-reports/       figures and result tables
-Dockerfile     container definition
+notebooks/          01 EDA → 09 final evaluation
+src/                importable feature engineering and prediction modules
+app/                FastAPI service
+scripts/            batch jobs — serving data prep and forecast precomputation
+docs/               decision rationale for every phase
+models/             trained LightGBM models
+reports/            figures and result tables
+streamlit_app.py    interactive demo
+Dockerfile          container definition
+requirements.txt    pinned dependencies for the deployed demo
 ```
 
 **[`docs/`](docs/) contains a written explanation of each phase** — what was done, why, the trade-offs considered, and what didn't work.
