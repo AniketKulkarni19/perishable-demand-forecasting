@@ -82,6 +82,26 @@ Two importance measures disagreed usefully: `onpromotion` ranked 9th by training
 
 ---
 
+## Serving
+
+Two paths, deliberately:
+
+| Path | Implementation | Reflects |
+|---|---|---|
+| **Real-time inference** | `app/main.py` — FastAPI, containerized with Docker | On-demand prediction with automatic request validation and interactive API docs |
+| **Batch precomputed** | `scripts_precompute.py` → Streamlit demo | How demand forecasting actually runs in production |
+
+A real retailer runs this as a **scheduled batch job** — forecast everything nightly, serve from a table. A live REST API is arguably the less realistic architecture for this use case. The API demonstrates real-time serving capability; the batch path reflects the production pattern.
+
+Run the API locally:
+```bash
+docker build -t perishable-forecast .
+docker run -p 8000:8000 perishable-forecast
+# Interactive docs at http://localhost:8000/docs
+```
+
+---
+
 ## Negative results
 
 Reported because they were tested, not because they worked.
@@ -101,6 +121,7 @@ Reported because they were tested, not because they worked.
 - **Cost assumptions are estimates**, not Favorita's actual figures. Mitigated by sensitivity analysis; price cancels out entirely, and only the over/under asymmetry ratio affects the result.
 - **The 0.80 bias factor was selected on validation** and applied unchanged to test, where it transferred cleanly (38.8% → 38.3%).
 - **Annualized figures are directional only.** The evaluation window is July — no major holidays or seasonal peaks.
+- **The deployed demo pins `pandas<3`.** The pipeline runs pandas 3.0, which Streamlit does not yet support. Only the deployment environment is pinned.
 
 ---
 
@@ -108,10 +129,12 @@ Reported because they were tested, not because they worked.
 
 ```
 notebooks/     01 EDA → 09 final evaluation
+src/           importable feature engineering and prediction modules
+app/           FastAPI service
 docs/          decision rationale for every phase
-src/           reusable modules
 models/        trained LightGBM models
 reports/       figures and result tables
+Dockerfile     container definition
 ```
 
 **[`docs/`](docs/) contains a written explanation of each phase** — what was done, why, the trade-offs considered, and what didn't work.
@@ -120,7 +143,7 @@ reports/       figures and result tables
 
 ## Stack
 
-Python 3.12 · DuckDB · pandas · LightGBM · NumPy · Matplotlib
+Python 3.12 · DuckDB · pandas · LightGBM · FastAPI · Docker · Streamlit
 Environment managed with `uv` (`uv.lock` for reproducibility)
 
 ## Running it
