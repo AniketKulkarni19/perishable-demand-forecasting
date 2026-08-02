@@ -2,6 +2,8 @@
 
 **Cutting forecast-related costs by 38% on fresh protein categories — by optimizing for spoilage cost rather than forecast accuracy.**
 
+**[→ Try the live demo](https://perishable-demand-forecasting-yqyz9zztek2qmerncudrxf.streamlit.app/)**
+
 End-to-end demand forecasting for perishable protein (meats, poultry, deli, prepared foods, seafood) across 54 supermarkets, built on the Corporación Favorita retail dataset. 125M raw transaction rows processed on an 8GB laptop.
 
 ---
